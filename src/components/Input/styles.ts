@@ -28,11 +28,4 @@ export const InputContainer = styled.div`
       box-shadow: 0 0 0 3px #fea;
     }
   }
-
-  p {
-    margin: 0;
-    color: #f31;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
 `

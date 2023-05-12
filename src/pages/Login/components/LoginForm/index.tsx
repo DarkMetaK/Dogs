@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import { useForm } from '../../../../hooks/useForm'
 import { UserContext } from '../../../../context/UserContext'
 
-import { LoginFormContainer } from './styles'
+import { Title } from '../../../../styles/global'
+import { CreateNewAccountContainer, LoginFormContainer } from './styles'
 import { Input } from '../../../../components/Input'
 import { Button } from '../../../../components/Button'
+import { Error } from '../../../../UI/Error'
 
 export function LoginForm() {
-  const { handleUserLogin } = useContext(UserContext)
+  const { handleUserLogin, error, loading } = useContext(UserContext)
   const username = useForm()
   const password = useForm()
 
@@ -22,8 +24,8 @@ export function LoginForm() {
   }
 
   return (
-    <LoginFormContainer>
-      <h1>Login</h1>
+    <LoginFormContainer className='animeLeft'>
+      <Title>Login</Title>
       <form onSubmit={handleSubmit}>
         <Input
           label="Usuário"
@@ -40,9 +42,15 @@ export function LoginForm() {
           onChange={password.onChange}
           onBlur={password.onBlur}
         />
-        <Button>Entrar</Button>
+        <Button disabled={loading}>Entrar</Button>
+        <Error errorMessage={error} />
       </form>
-      <Link to="/login/criar">Cadastro</Link>
+      <Link to="/login/recovery" className='passwordLost'>Perdeu a Senha?</Link>
+      <CreateNewAccountContainer>
+        <h2>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
+        <Button as={Link} to="/login/criar">Cadastro</Button>
+      </CreateNewAccountContainer>
     </LoginFormContainer>
   )
 }

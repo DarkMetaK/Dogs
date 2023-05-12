@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -34,11 +34,47 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: #333;
   }
 
   .container {
     max-width: 50rem;
     padding: 0 1rem;
     margin: 0 auto;
+  }
+
+  .animeLeft {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: animeLeft 0.3s forwards;
+  }
+
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+`
+
+export const Title = styled.h1`
+  font-family: var(--type-secondary);
+  line-height: 1;
+  font-size: 3rem;
+  margin: 1rem 0;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.2rem;
+    background: #fb1;
+    position: absolute;
+    bottom: 5px;
+    left: -5px;
+    z-index: -1;
   }
 `

@@ -7,6 +7,7 @@ import { LoginForm } from './pages/Login/components/LoginForm'
 import { LoginCreate } from './pages/Login/components/LoginCreate'
 import { LoginPasswordRecovery } from './pages/Login/components/Password/Recovery'
 import { LoginPasswordReset } from './pages/Login/components/Password/Reset'
+import { Conta } from './pages/Conta'
 
 export function Router() {
   return (
@@ -19,6 +20,7 @@ export function Router() {
           <Route path="/login/recuperar" element={ <LoginPasswordRecovery /> } />
           <Route path="/login/resetar" element={ <LoginPasswordReset /> } />
         </Route>
+        <Route path="/conta" element={ <Conta /> } />
       </Route>
     </Routes>
   )
