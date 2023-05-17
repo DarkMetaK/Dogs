@@ -91,6 +91,9 @@ export function UserStorage({children}: UserStorageProps) {
           setLoading(false)
         }    
       }
+      else {
+        setLogin(false)
+      }
     }
     autoLogin()
   }, [handleUserLogout])

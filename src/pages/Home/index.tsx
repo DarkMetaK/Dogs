@@ -1,5 +1,10 @@
+import { HomeContainer } from './styles'
+import { Feed } from '../../components/Feed'
+
 export function Home() {
   return (
-    <div>Home</div>
+    <HomeContainer className='container mainContainer'>
+      <Feed />
+    </HomeContainer>
   )
 }

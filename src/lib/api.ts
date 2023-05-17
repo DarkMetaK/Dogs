@@ -48,5 +48,44 @@ export function USER_POST(body: unknown) {
       },
       body: JSON.stringify(body),
     },
+  }
+}
+
+export function PHOTO_POST(token: string, formData: unknown) {
+  return {
+    url: API_URL + '/api/photo',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+      body: formData as string
+    },
+  }  
+}
+
+interface IPhotosGetProps {
+  page: number,
+  total: number,
+  user: number
+}
+
+export function PHOTOS_GET({page, total, user}: IPhotosGetProps) {
+  return {
+    url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+    options: {
+      method: 'GET',
+      cache: 'no-store' as RequestCache,
+    },
+  }  
+}
+
+export function PHOTO_GET(id: number) {
+  return {
+    url: `${API_URL}/api/photo/${id}`,
+    options: {
+      method: 'GET',
+      cache: 'no-store' as RequestCache,
+    },
   }  
 }

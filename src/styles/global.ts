@@ -43,6 +43,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
+  .mainContainer {
+    margin-top: 4rem;
+  }
+
   .animeLeft {
     opacity: 0;
     transform: translateX(-20px);
