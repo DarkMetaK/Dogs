@@ -6,7 +6,7 @@ import { PHOTO_GET } from '../../../lib/api'
 import { FeedModalContainer } from './styles'
 import { Error } from '../../../UI/Error'
 import { Loading } from '../../../UI/Loading'
-import { Post } from '../../Photo/Post'
+import { Post } from '../../Post'
 
 interface PhotoData {
   acessos: string,

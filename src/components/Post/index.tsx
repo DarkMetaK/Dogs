@@ -1,8 +1,13 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
+import { UserContext } from '../../context/UserContext'
+
 import { PostContainer } from './styles'
-import { Title } from '../../../styles/global'
-import { Comments } from '../../Comments'
+import { Title } from '../../styles/global'
+import { Comments } from '../Comments'
+import { DeletePhoto } from './DeletePhoto'
+import { ImageSkeleton } from '../../UI/ImageSkeleton'
 
 interface PhotoData {
   acessos: string,
@@ -13,7 +18,7 @@ interface PhotoData {
   peso: string,
   src: string,
   title: string,
-  total_comments: string
+  total_comments: string,
 }
 
 interface Comments {
@@ -40,27 +45,35 @@ interface PostProps {
 }
 
 export function Post({ photo, comments }: PostProps) {
+  const { userData } = useContext(UserContext)
+
   return (
     <PostContainer>
       <div className="image">
-        <img src={photo.src} alt={photo.title} />
+        <ImageSkeleton src={photo.src} alt={photo.title} />
       </div>
       <div className="details">
         <div className="about">
-          <p className='author'>
-            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
-            <span>{photo.acessos}</span>
+          <p className="author">
+            {userData && userData.username === photo.author ? (
+              <DeletePhoto photoId={photo.id} />
+            ) : (
+              <>
+              <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+              <span>{photo.acessos}</span>                
+              </>
+            )}
           </p>
           <Title>
             <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
           </Title>
-          <ul className='attributes'>
+          <ul className="attributes">
             <li>{photo.peso} kg</li>
             <li>{photo.idade} anos</li>
           </ul>
         </div>
       </div>
-      <Comments comments={comments}/>
+      <Comments comments={comments} photoId={photo.id} />
     </PostContainer>
   )
 }

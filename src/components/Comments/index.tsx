@@ -1,4 +1,9 @@
+import { useContext, useState } from 'react'
+
+import { UserContext } from '../../context/UserContext'
+
 import { CommentsContainer } from './styles'
+import { CommentForm } from './CommentForm'
 
 interface CommentsProps {
   comments: {
@@ -17,11 +22,26 @@ interface CommentsProps {
     comment_type: string,
     comment_parent: string,
     user_id: string,
-  }[]
+  }[],
+  photoId: number
 }
 
-export function Comments({ comments }: CommentsProps) {
+export function Comments({ comments, photoId }: CommentsProps) {
+  const { login } = useContext(UserContext)
+
+  const [ retrievedComments, setRetrievedComments ] = useState(() => [...comments])
+
   return (
-    <CommentsContainer>Comentários</CommentsContainer>
+    <>
+      <CommentsContainer>
+        {retrievedComments.map(comment => 
+          <li key={comment.comment_ID}>
+            <b>{comment.comment_author}: </b>
+            <span>{comment.comment_content}</span>
+          </li>
+        )}
+      </CommentsContainer>
+      {login && <CommentForm photoId={photoId} setRetrievedComments={setRetrievedComments} />}
+    </>
   )
 }

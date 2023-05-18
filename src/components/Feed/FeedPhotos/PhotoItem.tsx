@@ -1,6 +1,7 @@
 import { Dispatch } from 'react'
 
 import { PhotoItemContainer } from './styles'
+import { ImageSkeleton } from '../../../UI/ImageSkeleton'
 
 interface PhotoData {
   acessos: string,
@@ -26,7 +27,7 @@ export function FeedPhotosItem({photo, setModalPhoto}: FeedPhotosItemProps) {
 
   return (
     <PhotoItemContainer onClick={handleSetModalPhoto}>
-      <img src={photo.src} alt={photo.title} />
+      <ImageSkeleton src={photo.src} alt={photo.title} />
       <span>{photo.acessos}</span>
     </PhotoItemContainer>
   )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import viewsIcon from '../../../assets/visualizacao-black.svg'
+import viewsIcon from '../../assets/visualizacao-black.svg'
 
 export const PostContainer = styled.div`
   margin: auto;
@@ -28,7 +28,7 @@ export const PostContainer = styled.div`
     padding: 2rem 2rem 0 2rem;
   }
 
-  .img {
+  .image {
     grid-row: 1 / 4;
   }
 
