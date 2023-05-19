@@ -9,6 +9,7 @@ import { Input } from '../../../../../components/Input'
 import { Button } from '../../../../../components/Button'
 import { PASSWORD_RESET } from '../../../../../lib/api'
 import { Error } from '../../../../../UI/Error'
+import { Head } from '../../../../../UI/Head'
 
 export function LoginPasswordReset() {
   const navigate = useNavigate()
@@ -45,6 +46,9 @@ export function LoginPasswordReset() {
   }
 
   return (
+    <>
+    <Head title="Resete a Senha" />
+
     <div>
       <Title>Resete a senha</Title>
       <form onSubmit={handleResetPassword}>
@@ -59,6 +63,7 @@ export function LoginPasswordReset() {
         <Button disabled={isLoading}>Resetar</Button>        
       </form>
       {error && <Error errorMessage={error} />}
-    </div>
+    </div>    
+    </>
   )
 }

@@ -1,9 +1,11 @@
 import { FooterContainer } from './styles'
+import {ReactComponent as Dogs} from '../../assets/dogs-footer.svg'
 
 export function Footer() {
   return (
     <FooterContainer>
-      footer
+      <Dogs />
+      <p>Dogs. Alguns direitos reservados.</p>
     </FooterContainer>
   )
 }

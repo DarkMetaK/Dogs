@@ -8,6 +8,7 @@ import { Input } from '../../../../../components/Input'
 import { Button } from '../../../../../components/Button'
 import { PASSWORD_LOST } from '../../../../../lib/api'
 import { Error } from '../../../../../UI/Error'
+import { Head } from '../../../../../UI/Head'
 
 export function LoginPasswordRecovery() {
   const login = useForm()
@@ -25,6 +26,9 @@ export function LoginPasswordRecovery() {
     }
   }
   return (
+    <>
+    <Head title="Perdeu a Senha" />
+
     <section>
       <Title>Perdeu a senha?</Title>
       {data ? (
@@ -43,6 +47,7 @@ export function LoginPasswordRecovery() {
         </form>        
       )}
       {error && <Error errorMessage={error}/> }
-    </section>
+    </section>    
+    </>
   )
 }

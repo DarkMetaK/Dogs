@@ -7,6 +7,7 @@ import { PHOTO_GET } from '../../lib/api'
 import { Post } from '../../components/Post'
 import { Loading } from '../../UI/Loading'
 import { Error } from '../../UI/Error'
+import { Head } from '../../UI/Head'
 
 interface PhotoData {
   acessos: string,
@@ -57,7 +58,12 @@ export function Photo() {
     <section className='container mainContainer'>
       {error && <Error errorMessage={error}/>}
       {isLoading && <Loading />}
-      {photoData && <Post photo={photoData.photo} comments={photoData.comments} single/>}
-    </section>
+      {photoData && (
+        <>
+          <Head title={photoData.photo.title} />
+          <Post photo={photoData.photo} comments={photoData.comments} single/>        
+        </>
+      )}
+    </section>    
   )
 }

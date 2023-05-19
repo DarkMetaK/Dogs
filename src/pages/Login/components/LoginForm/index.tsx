@@ -9,6 +9,7 @@ import { CreateNewAccountContainer, LoginFormContainer } from './styles'
 import { Input } from '../../../../components/Input'
 import { Button } from '../../../../components/Button'
 import { Error } from '../../../../UI/Error'
+import { Head } from '../../../../UI/Head'
 
 export function LoginForm() {
   const { handleUserLogin, error, loading } = useContext(UserContext)
@@ -24,6 +25,9 @@ export function LoginForm() {
   }
 
   return (
+    <>
+    <Head title="Login" />
+
     <LoginFormContainer className='animeLeft'>
       <Title>Login</Title>
       <form onSubmit={handleSubmit}>
@@ -51,6 +55,8 @@ export function LoginForm() {
         <p>Ainda não possui conta? Cadastre-se no site.</p>
         <Button as={Link} to="/login/criar">Cadastro</Button>
       </CreateNewAccountContainer>
-    </LoginFormContainer>
+    </LoginFormContainer>    
+    </>
+    
   )
 }

@@ -10,6 +10,7 @@ import { Title } from '../../../../styles/global'
 import { Input } from '../../../../components/Input'
 import { Button } from '../../../../components/Button'
 import { Error } from '../../../../UI/Error'
+import { Head } from '../../../../UI/Head'
 
 export function LoginCreate() {
   const { handleUserLogin } = useContext(UserContext)
@@ -34,6 +35,9 @@ export function LoginCreate() {
   }
   
   return (
+    <>
+    <Head title="Crie a sua conta" />
+    
     <LoginCreateContainer>
       <Title>Cadastre-se</Title>
       <form onSubmit={handleSubmit}>
@@ -63,6 +67,7 @@ export function LoginCreate() {
         <Button disabled={isLoading}>Cadastrar</Button>
         <Error errorMessage={error}/>
       </form>
-    </LoginCreateContainer>
+    </LoginCreateContainer>    
+    </>
   )
 }
