@@ -45,7 +45,7 @@ export function LoginForm() {
         <Button disabled={loading}>Entrar</Button>
         <Error errorMessage={error} />
       </form>
-      <Link to="/login/recovery" className='passwordLost'>Perdeu a Senha?</Link>
+      <Link to="/login/recuperar" className='passwordLost'>Perdeu a Senha?</Link>
       <CreateNewAccountContainer>
         <h2>Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site.</p>

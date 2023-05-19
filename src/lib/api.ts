@@ -67,7 +67,7 @@ export function PHOTO_POST(token: string, formData: unknown) {
 interface IPhotosGetProps {
   page: number,
   total: number,
-  user: number
+  user: number | string
 }
 
 export function PHOTOS_GET({page, total, user}: IPhotosGetProps) {
@@ -114,4 +114,30 @@ export function PHOTO_DELETE(token: string, id: number) {
       },
     },
   }  
+}
+
+export function PASSWORD_LOST(body: unknown) {
+  return {
+    url: `${API_URL}/api/password/lost`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body)
+    },
+  }
+}
+
+export function PASSWORD_RESET(body: unknown) {
+  return {
+    url: `${API_URL}/api/password/reset`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body)
+    },
+  }
 }

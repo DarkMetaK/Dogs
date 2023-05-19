@@ -16,7 +16,7 @@ interface PhotoData {
 }
 
 interface FeedProps {
-  userId?: number
+  userId?: number | string
 }
 
 export function Feed({ userId }: FeedProps) {

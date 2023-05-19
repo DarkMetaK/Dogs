@@ -21,7 +21,7 @@ interface PhotoData {
 }
 
 interface FeedPhotoProps {
-  userId?: number,
+  userId?: number | string,
   desiredPage?: number,
   setModalPhoto: Dispatch<React.SetStateAction<PhotoData | null>>,
   setHaveAvailablePhotos: Dispatch<React.SetStateAction<boolean>>,

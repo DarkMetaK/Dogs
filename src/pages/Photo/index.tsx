@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { UseFetch } from '../../hooks/useFetch'
 import { PHOTO_GET } from '../../lib/api'
 
-import { PhotoContainer } from './styles'
 import { Post } from '../../components/Post'
 import { Loading } from '../../UI/Loading'
 import { Error } from '../../UI/Error'
@@ -55,10 +54,10 @@ export function Photo() {
   }, [id, request])
 
   return (
-    <PhotoContainer className='container mainContainer'>
+    <section className='container mainContainer'>
       {error && <Error errorMessage={error}/>}
       {isLoading && <Loading />}
       {photoData && <Post photo={photoData.photo} comments={photoData.comments} single/>}
-    </PhotoContainer>
+    </section>
   )
 }
