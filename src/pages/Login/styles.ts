@@ -18,6 +18,7 @@ export const LoginContainer = styled.section`
   & > div {
     max-width: 30rem;
     padding: 1rem;
+    margin-top: 20vh;
   }
 
   @media (max-width: 40rem) {
@@ -29,6 +30,7 @@ export const LoginContainer = styled.section`
 
     & > div {
       max-width: 100%;
+      margin-top: 0;
     }
   }
 `

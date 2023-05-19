@@ -29,7 +29,7 @@ export function LoginPasswordRecovery() {
     <>
     <Head title="Perdeu a Senha" />
 
-    <section>
+    <section className="animeLeft">
       <Title>Perdeu a senha?</Title>
       {data ? (
         <p style={{color: '#4c1'}}>{data as string}</p>

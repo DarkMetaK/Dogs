@@ -23,6 +23,7 @@ export const LoginFormContainer = styled.section`
 
 export const CreateNewAccountContainer = styled.div`
   margin-top: 4rem;
+  margin-bottom: 4rem;
 
   h2 {
     font-family: var(--type-secondary);
@@ -41,5 +42,9 @@ export const CreateNewAccountContainer = styled.div`
 
   p {
     margin: 2rem 0;
+  }
+
+  @media (max-width: 40rem) {
+    margin-bottom: 0;
   }
 `

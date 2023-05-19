@@ -5,7 +5,6 @@ import { useForm } from '../../../../hooks/useForm'
 import { UseFetch } from '../../../../hooks/useFetch'
 import { USER_POST } from '../../../../lib/api'
 
-import { LoginCreateContainer } from './styles'
 import { Title } from '../../../../styles/global'
 import { Input } from '../../../../components/Input'
 import { Button } from '../../../../components/Button'
@@ -38,7 +37,7 @@ export function LoginCreate() {
     <>
     <Head title="Crie a sua conta" />
     
-    <LoginCreateContainer>
+    <section className="animeLeft">
       <Title>Cadastre-se</Title>
       <form onSubmit={handleSubmit}>
         <Input
@@ -67,7 +66,7 @@ export function LoginCreate() {
         <Button disabled={isLoading}>Cadastrar</Button>
         <Error errorMessage={error}/>
       </form>
-    </LoginCreateContainer>    
+    </section>    
     </>
   )
 }

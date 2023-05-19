@@ -6,6 +6,10 @@ export const UserPhotoPostContainer = styled.section`
   gap: 2rem;
   margin-bottom: 2rem;
 
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr;
+  }
+
   #img {
     margin-bottom: 1rem;
   }

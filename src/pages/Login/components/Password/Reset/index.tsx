@@ -49,7 +49,7 @@ export function LoginPasswordReset() {
     <>
     <Head title="Resete a Senha" />
 
-    <div>
+    <section className="animeLeft">
       <Title>Resete a senha</Title>
       <form onSubmit={handleResetPassword}>
         <Input
@@ -63,7 +63,7 @@ export function LoginPasswordReset() {
         <Button disabled={isLoading}>Resetar</Button>        
       </form>
       {error && <Error errorMessage={error} />}
-    </div>    
+    </section>    
     </>
   )
 }
