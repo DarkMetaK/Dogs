@@ -9,8 +9,8 @@ const LayoutContainer = styled.main`
   flex-direction: column;
   min-height: calc(100vh + 10rem);
 
-  footer {
-    margin-top: auto;
+  .content {
+    flex: 1;
   }
 `
 
@@ -18,7 +18,9 @@ export function DefaultLayout() {
   return (
     <LayoutContainer>
     <Header />
-    <Outlet />
+    <div className='content'>
+      <Outlet />      
+    </div>
     <Footer />
     </LayoutContainer>
   )

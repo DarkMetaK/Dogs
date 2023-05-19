@@ -47,6 +47,10 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: 2rem;
   }
 
+  .VictoryContainer {
+    height: initial !important;
+  }
+
   .animeLeft {
     opacity: 0;
     transform: translateX(-20px);
