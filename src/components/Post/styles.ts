@@ -17,6 +17,22 @@ export const PostContainer = styled.div`
   transform: scale(0.8);
   animation: scaleUp 0.3s forwards;
 
+  &.single {
+    grid-template-columns: 1fr;
+    height: auto;
+
+    // Descobrir como fazer ele ocupar 100% do espaço, ai o overflow n vai precisar
+    .image {
+      grid-row: 1;
+      border-radius: 0.4rem;
+      overflow: hidden;
+    }
+
+    .details {
+      padding: 1rem 0 0 0;
+    }
+  }
+
   @keyframes scaleUp {
     to {
       opacity: initial;
@@ -86,9 +102,15 @@ export const PostContainer = styled.div`
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     grid-template-columns: minmax(20rem, 40rem);
+    grid-template-rows: auto auto minmax(128px, 1fr) auto;
 
-    .img {
+    .image {
       grid-row: 1;
+    }
+
+    &.single {
+      max-height: 100%;
+      grid-template-rows: auto auto 128px auto;
     }
   }
 `

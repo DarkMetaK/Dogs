@@ -9,13 +9,14 @@ import { LoginForm } from './pages/Login/components/LoginForm'
 import { LoginCreate } from './pages/Login/components/LoginCreate'
 import { LoginPasswordRecovery } from './pages/Login/components/Password/Recovery'
 import { LoginPasswordReset } from './pages/Login/components/Password/Reset'
-import { Conta } from './pages/Conta'
+import { Account } from './pages/Account'
 import { Feed } from './components/Feed'
-import { UserPhotoPost } from './pages/Conta/components/UserPhotoPost'
-import { UserStats } from './pages/Conta/components/UserStats'
+import { UserPhotoPost } from './pages/Account/components/UserPhotoPost'
+import { UserStats } from './pages/Account/components/UserStats'
+import { Photo } from './pages/Photo'
 
 export function Router() {
-  const { login } = useContext(UserContext)
+  const { login, userData } = useContext(UserContext)
 
   return (
     <Routes>
@@ -27,11 +28,12 @@ export function Router() {
           <Route path="/login/recuperar" element={ <LoginPasswordRecovery /> } />
           <Route path="/login/resetar" element={ <LoginPasswordReset /> } />
         </Route>
-        <Route path="/conta" element={ login ? <Conta /> : <Navigate to="/login" /> }>
-          <Route path="/conta" element={ <Feed /> } />
+        <Route path="/conta" element={ login ? <Account /> : <Navigate to="/login" /> }>
+          <Route path="/conta" element={ <Feed userId={userData?.id}/> } />
           <Route path="/conta/postar" element={ <UserPhotoPost /> } />
           <Route path="/conta/estatisticas" element={ <UserStats /> } />
         </Route>
+        <Route path="/foto/:id" element={ <Photo /> } />
       </Route>
     </Routes>
   )

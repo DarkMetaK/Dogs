@@ -27,10 +27,11 @@ interface Comment {
 
 interface CommentFormProps {
   photoId: number,
-  setRetrievedComments: Dispatch<React.SetStateAction<Comment[]>>
+  setRetrievedComments: Dispatch<React.SetStateAction<Comment[]>>,
+  single?: boolean,
 }
 
-export function CommentForm({photoId, setRetrievedComments} : CommentFormProps) {
+export function CommentForm({photoId, setRetrievedComments, single=false} : CommentFormProps) {
   const { error, request} = UseFetch()
 
   const [ comment, setComment ] = useState('')
@@ -50,7 +51,7 @@ export function CommentForm({photoId, setRetrievedComments} : CommentFormProps) 
   }
 
   return (
-    <CommentFormContainer onSubmit={handleSubmitComment}>
+    <CommentFormContainer onSubmit={handleSubmitComment} className={single ? 'single' : ''}>
       <textarea
         id="comment"
         name="comment"

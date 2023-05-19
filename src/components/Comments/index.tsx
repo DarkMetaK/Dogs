@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 import { UserContext } from '../../context/UserContext'
 
@@ -23,17 +23,23 @@ interface CommentsProps {
     comment_parent: string,
     user_id: string,
   }[],
-  photoId: number
+  photoId: number,
+  single?: boolean
 }
 
-export function Comments({ comments, photoId }: CommentsProps) {
+export function Comments({ comments, photoId, single=false }: CommentsProps) {
   const { login } = useContext(UserContext)
 
   const [ retrievedComments, setRetrievedComments ] = useState(() => [...comments])
+  const commentsSection = useRef<HTMLUListElement>(null)
+
+  useEffect(() => {
+    commentsSection.current && (commentsSection.current.scrollTop  = commentsSection.current.scrollHeight)
+  }, [retrievedComments])
 
   return (
     <>
-      <CommentsContainer>
+      <CommentsContainer ref={commentsSection} className={single ? 'single' : ''}>
         {retrievedComments.map(comment => 
           <li key={comment.comment_ID}>
             <b>{comment.comment_author}: </b>
@@ -41,7 +47,7 @@ export function Comments({ comments, photoId }: CommentsProps) {
           </li>
         )}
       </CommentsContainer>
-      {login && <CommentForm photoId={photoId} setRetrievedComments={setRetrievedComments} />}
+      {login && <CommentForm photoId={photoId} setRetrievedComments={setRetrievedComments} single={single} />}
     </>
   )
 }

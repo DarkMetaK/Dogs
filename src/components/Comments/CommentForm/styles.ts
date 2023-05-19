@@ -6,6 +6,10 @@ export const CommentFormContainer = styled.form`
   align-items: stretch;
   margin: 1rem;
 
+  &.single {
+    margin: 1rem 0;
+  }
+
   textarea {
     display: block;
     width: 100%;

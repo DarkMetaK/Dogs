@@ -41,14 +41,15 @@ interface Comments {
 
 interface PostProps {
   photo: PhotoData,
-  comments: Comments[]
+  comments: Comments[],
+  single?: boolean
 }
 
-export function Post({ photo, comments }: PostProps) {
+export function Post({ photo, comments, single=false }: PostProps) {
   const { userData } = useContext(UserContext)
 
   return (
-    <PostContainer>
+    <PostContainer className={single ? 'single' : ''}>
       <div className="image">
         <ImageSkeleton src={photo.src} alt={photo.title} />
       </div>
@@ -73,7 +74,7 @@ export function Post({ photo, comments }: PostProps) {
           </ul>
         </div>
       </div>
-      <Comments comments={comments} photoId={photo.id} />
+      <Comments comments={comments} photoId={photo.id} single={single} />
     </PostContainer>
   )
 }

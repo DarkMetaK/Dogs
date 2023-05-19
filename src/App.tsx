@@ -7,12 +7,12 @@ import { UserStorage } from './context/UserContext'
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <BrowserRouter>
-        <UserStorage>
-          <Router />  
-        </UserStorage> 
-      </BrowserRouter>
+    <GlobalStyle />
+    <BrowserRouter>
+      <UserStorage>
+        <Router />  
+      </UserStorage> 
+    </BrowserRouter>    
     </>
   )
 }

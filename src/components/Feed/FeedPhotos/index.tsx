@@ -21,20 +21,25 @@ interface PhotoData {
 }
 
 interface FeedPhotoProps {
-  setModalPhoto: Dispatch<React.SetStateAction<PhotoData | null>>
+  userId?: number,
+  desiredPage?: number,
+  setModalPhoto: Dispatch<React.SetStateAction<PhotoData | null>>,
+  setHaveAvailablePhotos: Dispatch<React.SetStateAction<boolean>>,
 }
 
-export function FeedPhotos({setModalPhoto} : FeedPhotoProps) {
+export function FeedPhotos({userId=0, desiredPage=1, setModalPhoto, setHaveAvailablePhotos} : FeedPhotoProps) {
   const { data, isLoading, error, request } = UseFetch()
   const photos = data as PhotoData[]
 
   useEffect(() => {
     async function fetchPhotos() {
-      const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 })
-      request(url, options)
+      const { url, options } = PHOTOS_GET({ page: desiredPage, total: 6, user: userId })
+      const { response, json } = await request(url, options)
+
+      if (response && response.ok && json.length < 6) setHaveAvailablePhotos(false)
     }
     fetchPhotos()
-  }, [request])
+  }, [desiredPage, request, setHaveAvailablePhotos, userId])
 
   if (error) return <Error errorMessage={error}/>
   if (isLoading) return <Loading />
